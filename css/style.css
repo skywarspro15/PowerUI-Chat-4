@@ -1,0 +1,854 @@
+:root {
+  --accent-color: 255, 255, 255;
+}
+
+html,
+body {
+  height: 99%;
+  background-color: rgb(14, 14, 14);
+  color: rgb(255, 255, 255);
+  font-family: Satoshi-Variable, "Segoe UI", "Helvetica", sans-serif;
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 10px;
+  transition: all 500ms;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(180, 180, 180);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(150, 150, 150);
+}
+
+.navContainer {
+  position: fixed;
+  width: 99%;
+  top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 10000;
+  background: rgba(14, 14, 14, 0.5);
+  backdrop-filter: blur(100px);
+  animation: slideDown 500ms;
+}
+
+ul.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  transition: all 500ms;
+}
+
+ul.navbar li.nav-item.left {
+  float: left;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  line-height: normal;
+  transition: all 500ms;
+}
+
+ul.navbar li.nav-item.right {
+  float: right;
+  text-align: center;
+  padding: 10px;
+  vertical-align: middle;
+  line-height: normal;
+  transition: all 500ms;
+}
+
+ul.navbar li.nav-item a {
+  text-decoration: none;
+  color: white;
+}
+
+ul.navbar li.nav-item a.button {
+  text-decoration: none;
+  color: white;
+}
+
+.button {
+  background-color: rgb(37, 37, 37);
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 15px;
+  border: 1px solid rgba(100, 100, 100, 0.5);
+  font-family: Satoshi-Bold, "Segoe UI", "Helvetica", sans-serif;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+ul.navbar li.nav-item a.button.accent {
+  text-decoration: none;
+  color: black;
+}
+
+.button.accent {
+  background-color: rgb(var(--accent-color));
+  color: black;
+  border-radius: 5px;
+  padding: 10px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 15px;
+  border: none;
+  font-family: Satoshi-Bold, "Segoe UI", "Helvetica", sans-serif;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+.button:hover {
+  background-color: #111;
+}
+
+.button.accent:hover {
+  background-color: #eee;
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+.title {
+  font-family: Satoshi-Bold, "Segoe UI", "Helvetica", sans-serif;
+  font-size: 20px;
+}
+
+.sidebar.left {
+  height: 100%;
+  width: 40%;
+  display: grid;
+  place-content: center start;
+}
+
+.sidebar.left h1 {
+  margin-left: 40px;
+  padding: 10px;
+  max-width: 50%;
+  z-index: 100;
+  background-color: rgba(14, 14, 14, 0.5);
+  backdrop-filter: blur(100px);
+  border-radius: 5px;
+}
+.sidebar.left p {
+  margin-left: 40px;
+  padding: 10px;
+  max-width: 50%;
+  z-index: 100;
+  background-color: rgba(14, 14, 14, 0.5);
+  backdrop-filter: blur(100px);
+  border-radius: 5px;
+}
+
+.sidebar.left .bg-image {
+  position: absolute;
+  width: 40%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-image: url("https://source.unsplash.com/random/1080x1920/?connection");
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+.main-content {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content h1 {
+  text-align: left;
+  margin: 35px;
+}
+
+.main-content p {
+  text-align: left;
+  margin-left: 35px;
+  margin-top: -15px;
+}
+
+.main-content .login-form {
+  margin-left: 35px;
+  margin-top: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content .login-form input {
+  font-family: Satoshi-Variable, "Segoe UI", "Helvetica", sans-serif;
+  margin-top: 10px;
+  height: 20px;
+  background-color: rgb(25, 25, 25);
+  color: #fff;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 10px;
+}
+
+.main-content .login-form label {
+  margin-top: 10px;
+  height: 20px;
+  background-color: rgb(14, 14, 14);
+  color: #fff;
+}
+
+.main-content .login-form .buttons button.button {
+  margin-top: 20px;
+  width: 35%;
+  background-color: rgb(37, 37, 37);
+}
+
+.welcomeContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeContent p {
+  width: 80%;
+}
+
+.welcomeContent h1 {
+  width: 80%;
+}
+
+.welcomeContent .buttons {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.chatsMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background-color: rgb(8, 8, 8);
+  width: 25%;
+  height: 100%;
+  overflow: auto;
+  transition: all cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+.chatsMenu .chatInfo {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatsMenu .chatInfo .header {
+  position: sticky;
+  padding: 10px;
+  top: 0;
+  background-color: rgb(8, 8, 8);
+  display: flex;
+  flex-direction: column;
+}
+
+.chatsMenu .chatInfo .header .chatOptions {
+  display: flex;
+  gap: 10px;
+}
+
+.chatsMenu .chatInfo .user {
+  display: flex;
+  animation: fadeIn 200ms;
+}
+
+.chatsMenu .chatInfo .user .chat {
+  margin-left: 10px;
+  padding: 0;
+}
+
+.chatsMenu .chatInfo .user img {
+  margin-top: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.chatsMenu .chatInfo .user .chat p {
+  font-size: 14.5px;
+  max-width: 80%;
+}
+
+.chatsMenu .chatInfo .user .chat p a {
+  color: white;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  z-index: 100000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  transition: all cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+.modal.hidden {
+  display: block;
+  opacity: 0;
+  transform: scale(-10%);
+  z-index: -3000;
+}
+
+.modal-content {
+  border-radius: 5px;
+  background-color: rgb(25, 25, 25);
+  margin: 15% auto;
+  padding: 20px;
+  width: 50%;
+  height: 50%;
+  transition: all ease-in-out 0.5s;
+}
+
+.modal-content .list {
+  overflow: auto;
+  height: 75%;
+}
+
+.modal-content .list ul#userList {
+  list-style-type: none;
+  text-align: center;
+}
+
+.modal-content .list ul#userList li a {
+  font-family: Satoshi-Bold, "Segoe UI", "Helvetica", sans-serif;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+#statusUI input {
+  font-family: Satoshi-Variable, "Segoe UI", "Helvetica", sans-serif;
+  margin-top: 10px;
+  height: 20px;
+  background-color: rgb(25, 25, 25);
+  color: #fff;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 10px;
+  width: 50%;
+}
+
+#statusUI {
+  height: 475px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chat-messages {
+  margin-top: 50px;
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+p.chat-bubble {
+  font-size: 15px;
+  text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  width: max-content;
+  overflow-wrap: break-word;
+  max-width: 50%;
+  animation: enterUp cubic-bezier(0.77, 0, 0.18, 1) 500ms;
+}
+
+p.chat-bubble.left {
+  background-color: rgb(42, 42, 42);
+}
+
+p.chat-bubble.right {
+  text-align: left;
+  margin-left: auto;
+  background: rgb(2, 0, 36);
+  background: -moz-linear-gradient(
+    360deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(98, 0, 255, 0.5970763305322129) 0%,
+    rgba(139, 0, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    360deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(98, 0, 255, 0.5970763305322129) 0%,
+    rgba(139, 0, 255, 1) 100%
+  );
+  background: linear-gradient(
+    360deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(98, 0, 255, 0.5970763305322129) 0%,
+    rgba(139, 0, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#8b00ff",GradientType=1);
+}
+
+.chat-frame {
+  position: fixed;
+  border: none;
+  float: right;
+  left: 25%;
+  width: 75%;
+  height: 99%;
+  z-index: 10000;
+  transition: all cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+.chat-frame.hidden {
+  display: block;
+  opacity: 0;
+  transform: translateY(50%);
+  z-index: -100;
+}
+
+.chat-header {
+  position: fixed;
+  top: -10px;
+  left: 0;
+  padding: 5px;
+  margin-left: 5px;
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+  background-color: rgb(8, 8, 8);
+}
+
+.chat-header button.button {
+  margin-top: 5px;
+  height: 40px;
+}
+
+.exitChat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  line-height: 20px;
+  background: rgb(8, 8, 8);
+  z-index: 200000;
+  text-decoration: none;
+  color: white;
+  transition: all cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+.exitChat.hidden {
+  display: block;
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: -200;
+}
+
+.chat-input {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 99%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(8, 8, 8);
+  justify-content: center;
+  align-items: center;
+  gap: 1%;
+}
+
+.chat-input .button {
+  margin-left: auto;
+}
+
+.chat-input .message-input {
+  font-family: Satoshi-Variable, "Segoe UI", "Helvetica", sans-serif;
+  margin-top: 10px;
+  height: 20px;
+  background-color: rgb(25, 25, 25);
+  color: #fff;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 5px;
+  padding: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-size: 10px;
+  width: 90%;
+}
+
+#callIncoming .buttons {
+  margin-top: 150px;
+  display: flex;
+  gap: 10px;
+  transition: all cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+@media screen and (max-width: 1000px) {
+  .chatsMenu .chatOptions {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .modal {
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .modal-content {
+    border-radius: 5px;
+    background-color: rgb(25, 25, 25);
+    margin: 0 auto;
+    padding: 10px;
+    width: 95%;
+    height: 100%;
+  }
+  #statusUI {
+    height: 100%;
+  }
+  .chatsMenu .chatOptions {
+    flex-direction: column;
+  }
+  #callIncoming .buttons {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chatsMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: rgb(8, 8, 8);
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+  }
+  .modal {
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .modal-content {
+    border-radius: 5px;
+    background-color: rgb(25, 25, 25);
+    margin: 0 auto;
+    padding: 10px;
+    width: 95%;
+    height: 100%;
+  }
+
+  .chat-frame {
+    position: fixed;
+    border: none;
+    float: right;
+    left: 30%;
+    width: 70%;
+    height: 99%;
+    z-index: 10000;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar.left {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-content: center start;
+  }
+
+  .sidebar.left h1 {
+    display: none;
+  }
+  .sidebar.left p {
+    display: none;
+  }
+
+  .sidebar.left .bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url("https://source.unsplash.com/random/1080x1920/?connection");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(100px);
+    opacity: 0.5;
+    z-index: 0;
+  }
+
+  .main-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content h1 {
+    text-align: left;
+    margin: 35px;
+  }
+
+  .main-content p {
+    text-align: left;
+    margin-left: 35px;
+    margin-top: -15px;
+    width: 50%;
+  }
+
+  .main-content .login-form {
+    margin-left: 35px;
+    margin-top: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .main-content .login-form input {
+    margin-top: 10px;
+    height: 20px;
+    background-color: rgba(25, 25, 25, 0.5);
+    color: #fff;
+    border: 1px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 10px;
+  }
+
+  .main-content .login-form label {
+    margin-top: 10px;
+    height: 20px;
+    background: none;
+    color: #fff;
+  }
+
+  .main-content .login-form .buttons button.button {
+    margin-top: 20px;
+    width: 35%;
+    background-color: rgba(37, 37, 37, 0.8);
+  }
+
+  .chatsMenu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background-color: rgb(8, 8, 8);
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .modal {
+    position: fixed;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  .modal-content {
+    border-radius: 5px;
+    background-color: rgb(25, 25, 25);
+    margin: 0 auto;
+    padding: 10px;
+    width: 90%;
+    height: 100%;
+  }
+
+  .chatsMenu .chatOptions {
+    flex-direction: row;
+  }
+
+  .chat-frame {
+    position: fixed;
+    border: none;
+    float: right;
+    top: 0;
+    left: 0;
+    margin-top: 40px;
+    width: 100%;
+    height: 92%;
+    z-index: 10000;
+  }
+}
+
+.call-screen {
+  background-color: rgb(8, 8, 8);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -4200000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: fadeIn cubic-bezier(0.77, 0, 0.18, 1) 0.5s;
+}
+
+.call-screen .info {
+  margin-top: 10%;
+}
+
+.call-screen .info button.button {
+  margin-top: 20%;
+}
+
+.call-screen .bg-image {
+  width: 100%;
+  height: 100%;
+  background-image: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(100px);
+  opacity: 0.5;
+  z-index: 1;
+}
+
+@keyframes enterUp {
+  0% {
+    transform: translateY(250px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-250px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transsform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-250px);
+    opacity: 0;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(-250px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-250px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
