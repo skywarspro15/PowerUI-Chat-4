@@ -163,11 +163,13 @@ function callUser(user) {
   getUserMedia(
     { audio: true },
     function (stream) {
+      dialTimeout = 5;
       curStream = stream;
       call = peer.call(user, stream);
       dialInterval = setInterval(function () {
         dialTimeout = dialTimeout - 1;
-        if (dialTimeout > 0) {
+        console.log(dialTimeout);
+        if (dialTimeout < 0) {
           const error = new Audio("sounds/disconnected.wav");
           clearInterval(dialInterval);
           dialtone.remove();

@@ -23,10 +23,7 @@ function connect() {
       let openedUser = document.getElementById("curUser").innerHTML;
       let dialtone = document.getElementById("dialtone");
       let error = new Audio("sounds/disconnected.wav");
-      if (
-        declinedBy == openedUser &&
-        declinedTo == localStorage.getItem("username")
-      ) {
+      if (declinedBy == openedUser && declinedTo == getCookie("username")) {
         dialtone.remove();
         error.play();
         hideModal("callRinging");
@@ -39,10 +36,7 @@ function connect() {
 
     if (dataType == "CALL END") {
       let openedUser = document.getElementById("curUser").innerHTML;
-      if (
-        dataContent == openedUser ||
-        dataContent == localStorage.getItem("username")
-      ) {
+      if (dataContent == openedUser || dataContent == getCookie("username")) {
         document.getElementById("callStream").remove;
         setTimeout(function () {
           stopStream();
@@ -64,10 +58,7 @@ function connect() {
       let openedUser = document.getElementById("curUser").innerHTML;
       let dialtone = document.getElementById("dialtone");
       let error = new Audio("sounds/disconnected.wav");
-      if (
-        declinedBy == openedUser &&
-        declinedTo == localStorage.getItem("username")
-      ) {
+      if (declinedBy == openedUser && declinedTo == getCookie("username")) {
         dialtone.remove();
         error.play();
         hideModal("callRinging");
@@ -85,15 +76,9 @@ function connect() {
 
       let openedUser = document.getElementById("curUser").innerHTML;
 
-      if (
-        messageAuthor ==
-        localStorage.getItem("username") + " to " + openedUser
-      ) {
+      if (messageAuthor == getCookie("username") + " to " + openedUser) {
         addChatBubble(true, messageContent);
-      } else if (
-        messageAuthor ==
-        openedUser + " to " + localStorage.getItem("username")
-      ) {
+      } else if (messageAuthor == openedUser + " to " + getCookie("username")) {
         addChatBubble(false, messageContent);
       }
 
@@ -106,7 +91,7 @@ function connect() {
       let recvBy = String(dataContent).split(":")[0];
       let recvTo = String(dataContent).split(":")[1];
       let openedUser = document.getElementById("curUser").innerHTML;
-      if (recvBy == openedUser && recvTo == localStorage.getItem("username")) {
+      if (recvBy == openedUser && recvTo == getCookie("username")) {
         extendTimeout();
       }
     }
