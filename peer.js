@@ -278,3 +278,7 @@ function stopStream() {
 function extendTimeout() {
   dialTimeout = 5;
 }
+
+function stopDialInt() {
+  clearInterval(dialInterval);
+}

@@ -28,6 +28,7 @@ function connect() {
         error.play();
         hideModal("callRinging");
         unHideModal("callDeclined");
+        stopDialInt();
         setTimeout(function () {
           stopStream();
         }, 1000);
@@ -63,6 +64,7 @@ function connect() {
         error.play();
         hideModal("callRinging");
         unHideModal("userInCall");
+        stopDialInt();
         setTimeout(function () {
           hideModal("userInCall");
           stopStream();
