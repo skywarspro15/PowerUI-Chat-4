@@ -21,7 +21,14 @@ function connect() {
       let declinedBy = String(dataContent).split(":")[0];
       let declinedTo = String(dataContent).split(":")[1];
       let openedUser = document.getElementById("curUser").innerHTML;
-      if (declinedBy == openedUser && declinedTo == getCookie("username")) {
+      let dialtone = document.getElementById("dialtone");
+      let error = new Audio("sounds/disconnected.wav");
+      if (
+        declinedBy == openedUser &&
+        declinedTo == localStorage.getItem("username")
+      ) {
+        dialtone.remove();
+        error.play();
         hideModal("callRinging");
         unHideModal("callDeclined");
         setTimeout(function () {
@@ -32,14 +39,16 @@ function connect() {
 
     if (dataType == "CALL END") {
       let openedUser = document.getElementById("curUser").innerHTML;
-      if (dataContent == openedUser || dataContent == getCookie("username")) {
+      if (
+        dataContent == openedUser ||
+        dataContent == localStorage.getItem("username")
+      ) {
         document.getElementById("callStream").remove;
         setTimeout(function () {
           stopStream();
         }, 1000);
         const callScreen = document.getElementById("callScreen");
         const sessUser = document.getElementById("sessUser");
-        const inCall = document.getElementById("inCall");
         const bgImage = document.getElementById("bgImage");
         inCall.innerHTML = "false";
         bgImage.style.backgroundImage = "none";
@@ -53,7 +62,14 @@ function connect() {
       let declinedBy = String(dataContent).split(":")[0];
       let declinedTo = String(dataContent).split(":")[1];
       let openedUser = document.getElementById("curUser").innerHTML;
-      if (declinedBy == openedUser && declinedTo == getCookie("username")) {
+      let dialtone = document.getElementById("dialtone");
+      let error = new Audio("sounds/disconnected.wav");
+      if (
+        declinedBy == openedUser &&
+        declinedTo == localStorage.getItem("username")
+      ) {
+        dialtone.remove();
+        error.play();
         hideModal("callRinging");
         unHideModal("userInCall");
         setTimeout(function () {
@@ -69,15 +85,30 @@ function connect() {
 
       let openedUser = document.getElementById("curUser").innerHTML;
 
-      if (messageAuthor == getCookie("username") + " to " + openedUser) {
+      if (
+        messageAuthor ==
+        localStorage.getItem("username") + " to " + openedUser
+      ) {
         addChatBubble(true, messageContent);
-      } else if (messageAuthor == openedUser + " to " + getCookie("username")) {
+      } else if (
+        messageAuthor ==
+        openedUser + " to " + localStorage.getItem("username")
+      ) {
         addChatBubble(false, messageContent);
       }
 
       setTimeout(function () {
         window.scrollTo(0, document.body.scrollHeight);
       }, 500);
+    }
+
+    if ((dataType = "CALL RECV")) {
+      let recvBy = String(dataContent).split(":")[0];
+      let recvTo = String(dataContent).split(":")[1];
+      let openedUser = document.getElementById("curUser").innerHTML;
+      if (recvBy == openedUser && recvTo == localStorage.getItem("username")) {
+        extendTimeout();
+      }
     }
   });
 
