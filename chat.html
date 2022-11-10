@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/satoshi.css" />
+    <title>Chat</title>
+  </head>
+  <body>
+    <p hidden id="inCall">false</p>
+    <p hidden id="curUser"></p>
+    <div class="chat-header">
+      <p id="username"></p>
+      <button class="button" onclick="" id="callUser">Call</button>
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <div class="chat-input">
+      <input
+        type="text"
+        id="messageInput"
+        class="message-input"
+        placeholder="Type your message"
+        autocomplete="off"
+      />
+      <button class="button" onclick="sendToUser()">Send</button>
+    </div>
+    <div class="modal hidden" id="connectionLost">
+      <div class="modal-content">
+        <h3>Connection lost</h3>
+        <p>
+          Please check your network connection. <br />
+          Trying to reconnect...
+        </p>
+      </div>
+    </div>
+    <div class="modal hidden" id="callRinging">
+      <div class="modal-content">
+        <h3>Ringing user...</h3>
+        <p>
+          Waiting for user to respond... <br />
+          Please wait...
+        </p>
+      </div>
+    </div>
+    <div class="modal hidden" id="callIncoming">
+      <div class="modal-content">
+        <h3>Call incoming</h3>
+        <p id="callText">
+          User is calling you! <br />
+          Answer the call?
+        </p>
+        <div class="buttons">
+          <button class="button" id="answer">Answer</button>
+          <button class="button" id="decline">Decline</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal hidden" id="callDeclined">
+      <div class="modal-content">
+        <h3>Call declined</h3>
+        <p>
+          The user declined the call. <br />
+          Try again?
+        </p>
+        <div class="buttons">
+          <button class="button" id="tryAgain" onclick="tryAgain();">
+            Try again
+          </button>
+          <button class="button" id="giveUp" onclick="closeCall();">No</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal hidden" id="userInCall">
+      <div class="modal-content">
+        <h3>User in call already</h3>
+        <p>
+          The user is already in a call. <br />
+          Try again later.
+        </p>
+      </div>
+    </div>
+    <div class="call-screen" id="callScreen">
+      <div class="info">
+        <h3 id="sessUser">Username</h3>
+        <p id="sessTime">00:00:00 elapsed</p>
+        <button class="button" id="endCall">End call</button>
+      </div>
+      <div class="bg-image" id="bgImage"></div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+  <script src="socket.js"></script>
+  <script src="peer.js"></script>
+  <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (String(urlParams.get("user")).trim() != "null") {
+      document.getElementById("username").innerHTML = encodeHTML(
+        urlParams.get("user")
+      );
+      document.getElementById("curUser").innerHTML = urlParams.get("user");
+      document
+        .getElementById("callUser")
+        .setAttribute("onclick", "callUser('" + urlParams.get("user") + "');");
+      openPeer(getCookie("username"));
+      loadMessages(urlParams.get("user"));
+      connect();
+    }
+  </script>
+</html>
