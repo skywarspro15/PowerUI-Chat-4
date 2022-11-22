@@ -1,4 +1,29 @@
+var count = 0;
+
+async function addReactionBubble(you = false, message, reaction) {
+  let chatBubble = document.getElementById(message);
+  let reactionBubble = document.createElement("button");
+
+  if (you) {
+    reactionBubble.className = "reaction-bubble right";
+  } else {
+    reactionBubble.className = "reaction-bubble left";
+  }
+
+  reactionBubble.innerHTML = reaction;
+
+  document.body.appendChild(reactionBubble);
+
+  insertAfter(chatBubble, reactionBubble);
+}
+
 async function addChatBubble(you = false, message) {
+  let elementExists = document.getElementById(message + "#" + count);
+
+  if (elementExists) {
+    count = count + 1;
+  }
+
   let chatMessages = document.getElementById("chat-messages");
 
   let chatBubble = document.createElement("p");
@@ -10,6 +35,7 @@ async function addChatBubble(you = false, message) {
   }
 
   chatBubble.innerHTML = message;
+  chatBubble.id = message + "#" + count;
 
   chatMessages.appendChild(chatBubble);
 }
@@ -174,7 +200,15 @@ async function loadMessages(name) {
       let message = String(array[i]).trim().split(":");
 
       let sender = message[0];
-      let content = message[1];
+      let content = "";
+
+      for (var j = 1; j < message.length; j++) {
+        if (j == 1) {
+          content = message[j];
+        } else {
+          content = content + ":" + message[j];
+        }
+      }
 
       if (sender == getCookie("username")) {
         addChatBubble(true, content);
@@ -335,6 +369,21 @@ function makeRequest(method, url) {
     };
     xhr.send();
   });
+}
+
+function makeId(length) {
+  var result = "";
+  var characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+function insertAfter(referenceNode, newNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 function setCookie(cname, cvalue) {

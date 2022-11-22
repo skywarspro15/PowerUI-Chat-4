@@ -440,6 +440,37 @@ p.chat-bubble.right {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#8b00ff",GradientType=1);
 }
 
+button.reaction-bubble {
+  animation: enterUp cubic-bezier(0.77, 0, 0.18, 1) 500ms;
+  background-color: rgb(37, 37, 37);
+  color: white;
+  border-radius: 20px;
+  font-size: 15px;
+  width: 40px;
+  border: 1px solid rgba(100, 100, 100, 0.5);
+  font-family: Satoshi-Bold, "Segoe UI", "Helvetica", sans-serif;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+button.reaction-bubble.left {
+  text-align: center;
+}
+
+button.reaction-bubble:hover {
+  background-color: #111;
+}
+
+button.reaction-bubble:active {
+  transform: scale(0.9);
+}
+
+button.reaction-bubble.right {
+  text-align: center;
+  margin-left: auto;
+  margin-top: -10px;
+}
+
 .chat-frame {
   position: fixed;
   border: none;

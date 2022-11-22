@@ -73,10 +73,19 @@ function connect() {
     }
 
     if (dataType == "MESSAGE") {
-      let messageAuthor = String(dataContent).split(":")[0];
-      let messageContent = String(dataContent).split(":")[1];
+      let arrayed = String(dataContent).split(":");
+      let messageAuthor = arrayed[0];
+      let messageContent = "";
 
       let openedUser = document.getElementById("curUser").innerHTML;
+
+      for (var j = 1; j < arrayed.length; j++) {
+        if (j == 1) {
+          messageContent = arrayed[j];
+        } else {
+          messageContent = messageContent + ":" + arrayed[j];
+        }
+      }
 
       if (messageAuthor == getCookie("username") + " to " + openedUser) {
         addChatBubble(true, messageContent);
