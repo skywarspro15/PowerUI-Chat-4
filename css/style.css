@@ -409,6 +409,7 @@ p.chat-bubble {
   overflow-wrap: break-word;
   max-width: 50%;
   animation: enterUp cubic-bezier(0.77, 0, 0.18, 1) 500ms;
+  margin-top: -10px;
 }
 
 p.chat-bubble.left {
